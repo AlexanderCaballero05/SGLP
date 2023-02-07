@@ -1,0 +1,209 @@
+<?php
+require('../../template/header.php');
+
+//require('../conexion.php');
+header('Content-Type: text/html; charset=ISO-8859-1');
+
+
+$id_vendedor = $_GET['v'];
+
+$consulta_vendedor = mysqli_query($conn,"SELECT * FROM vendedores WHERE id = '$id_vendedor' ");
+$ob_vendedor = mysqli_fetch_object($consulta_vendedor);
+
+$identidad 			  = $ob_vendedor->identidad;
+
+$identidad1 = substr($identidad, 0,4);
+$identidad2 = substr($identidad, 4,4);
+$identidad3 = substr($identidad, 8,5);
+
+$identidad = $identidad1."-".$identidad2."-".$identidad3;
+
+$nombre_vendedor 	  = $ob_vendedor->nombre;
+$nombre_vendedor 	  = substr($nombre_vendedor, 0,35);
+
+
+$tipo_identificacion  = $ob_vendedor->tipo_identificacion;
+$codigo 			  = $ob_vendedor->codigo;
+$asociacion 		  = $ob_vendedor->asociacion;
+$sexo  				  = $ob_vendedor->sexo;
+$estado_civil 		  = $ob_vendedor->estado_civil;
+$zona_venta 		  = $ob_vendedor->zona_venta;
+$zona_venta 		  = substr($zona_venta, 0,15);
+
+$telefono 			  = $ob_vendedor->telefono;
+$direccion 			  = $ob_vendedor->direccion;
+$estado 			  = $ob_vendedor->estado;
+$fecha_creacion 	  = $ob_vendedor->fecha_creacion;
+$geocodigo 			  = $ob_vendedor->geocodigo;
+$usuario_creacion     = $ob_vendedor->id_usuario_creacion;
+$seccional     		  = $ob_vendedor->seccional;
+$bolsas     		  = $ob_vendedor->numero_bolsas;
+$foto     		      = $ob_vendedor->foto;
+$rand               = rand(0, 99999);
+$foto               = $foto."?rand".$rand;
+
+$ruta_foto 			  = "./imagenes/vendedores/".$foto;
+
+if ($estado == 1) {
+$desc_estado = "ACTIVO";
+}else{
+$desc_estado = "INACTIVO";
+}
+
+if ($asociacion == "A") {
+$desc_asociacion = "ANAVELH";
+}elseif ($asociacion == "B") {
+$desc_asociacion = "ANVLUH";
+}else{
+$desc_asociacion = "SIN ASOCIACION";	
+}
+
+
+if ($sexo == "M") {
+$desc_sexo = "MASCULINO";
+}else{
+$desc_sexo = "FEMENINO";	
+}
+
+
+if ($estado_civil == "S") {
+$desc_civil = "SOLTERO";
+}elseif ($estado_civil == "C") {
+$desc_civil = "CASADO";
+}elseif ($estado_civil == "V") {
+$desc_civil = "VIUDO";
+}elseif ($estado_civil == "D") {
+$desc_civil = "DIVORCIADO";
+}
+
+$consulta_geocodigo = mysqli_query($conn,"SELECT * FROM geocodigos WHERE cod_muni = '$geocodigo'  ");
+
+if (mysqli_num_rows($consulta_geocodigo) > 0) {
+$ob_geocodigo = mysqli_fetch_object($consulta_geocodigo);
+$municipio    = $ob_geocodigo->municipio;
+$depto 		  = $ob_geocodigo->dpto;
+}else{
+$municipio    = "";
+$depto 		  = "";	
+}
+
+if ($usuario_creacion != '') {
+$consulta_usuario_creacion = mysqli_query($conn,"SELECT * FROM pani_usuarios WHERE id = '$usuario_creacion' ");
+$ob_usuario_creacion = mysqli_fetch_object($consulta_usuario_creacion);
+$usuario = $ob_usuario_creacion->usuario;
+$nombre  = $ob_usuario_creacion->nombre_completo;
+}else{
+$usuario = "";
+$nombre  = "";	
+}
+
+if ($tipo_identificacion == 1) {
+$identificacion = "Tarjeta Identidad";
+}elseif ($tipo_identificacion == 2) {
+$identificacion = "No. Residencia";
+}elseif ($tipo_identificacion == 3) {
+$identificacion = "Pasaporte";
+}elseif ($tipo_identificacion == 4) {
+$identificacion = "No especificado";	
+}
+
+?>
+
+
+
+<style type="text/css">
+	@media print 
+{
+   @page
+   {
+    size: landscape;
+  }
+}
+</style>
+
+
+<!--
+<div style="width: 336px; height: 192px; background-color: grey">
+-->
+
+
+
+<?php 
+
+if ($asociacion == "A") {
+
+?>
+<div style="width: 486px ; height: 305px; margin-top: -61px" id="container_2">
+
+<img id="i_anavelh" src="./imagenes/carnet_anavelh_front.jpg" width="100%" height="100%" style="position: relative;">
+<span style=" font-size: 14px; position: absolute; margin-top: -105px; margin-left: 87px; color: #094703; font-weight: bold" ><?php echo $nombre_vendedor; ?> </span>
+<span style=" font-size: 14px; position: absolute; margin-top: -69px; margin-left: 81px; color: #094703; font-weight: bold;" ><?php echo $identidad; ?> </span>
+<span style="  font-size: 14px; width: 150px ;text-align: center ;position: absolute; margin-top: -24px; margin-left: 198px;  color: #094703; font-weight: bold;" ><?php echo $asociacion."-".$seccional."-".$codigo; ?> </span>
+<span style=" font-size: 17px; position: absolute; margin-top: -35px; margin-left: 436px;  color: #001F89; font-weight: bold;" ><?php echo $bolsas; ?> </span>
+
+<span align="center"  style=" font-size: 14px; width: 200px ;text-align: center;position: absolute; margin-top: -47px; margin-left: 0px;  color: #094703; font-weight: bold; " ><?php echo $zona_venta; ?> </span>
+
+<img style="border:2px solid #094703; border-radius: 14%; position: absolute; margin-top: -250.5px; margin-left: 350px;" width="120px"; height ="120px" src="<?php echo $ruta_foto; ?>" >
+
+</div>
+
+<div style="width: 486px ; height: 305px;">
+	<img src="./imagenes/carnet_anavelh_back.jpg" width="100%" height="100%" style="position: relative;">
+</div>
+
+<?php
+
+}elseif ($asociacion == "B") {
+
+
+?>
+<div style="width: 486px ; height: 305px; margin-top: -61px" id="container_2">
+
+<img src="./imagenes/carnet_anvluh_front.jpg" width="100%" height="100%" style="position: relative;">
+<span style="  font-size: 14px; position: absolute; margin-top: -106px; margin-left: 87px; color: #001F89; font-weight: bold" ><?php echo $nombre_vendedor; ?> </span>
+<span style=" font-size: 14px; position: absolute; margin-top: -71.5px; margin-left: 81px; color: #001F89; font-weight: bold;" ><?php echo $identidad; ?> </span>
+
+<span style="font-size: 14px width: 150px ;text-align: center ;position: absolute; margin-top: -28px; margin-left: 256px;  color: #E3E300; font-weight: bold;" ><?php echo $asociacion."-".$seccional."-".$codigo; ?> </span>
+
+<span style="font-size: 17px; width: 150px ; position: absolute; margin-top: -36px; margin-left: 436px;  color: #E3E300; font-weight: bold;" ><?php echo $bolsas; ?> </span>
+
+<span align="center" style="font-size: 14px; width: 200px ;text-align: center;position: absolute; margin-top: -49px; margin-left: 0px;  color: #001F89; font-weight: bold; " ><?php echo $zona_venta; ?> </span>
+
+<img style="border:2px solid #094703; border-radius: 14%; position: absolute; margin-top: -250.5px; margin-left: 350px;" width="120px"; height ="120px" src="<?php echo $ruta_foto; ?>" >
+</div>
+
+
+<div style="width: 486px ; height: 305px;">
+	<img src="./imagenes/carnet_anvluh_back.jpg" width="100%" height="100%" style="position: relative;">
+</div>
+
+<?php
+
+}elseif ($asociacion == "C") {
+
+?>
+<div style="width: 486px ; height: 305px; margin-top: -61px" id="container_2">
+
+
+<img src="./imagenes/carnet_sin_front.jpg" width="100%" height="100%" style="position: relative;">
+<span  style="font-size: 14px; position: absolute; margin-top: -106px; margin-left: 87px; color: #001F89; font-weight: bold" ><?php echo $nombre_vendedor; ?> </span>
+<span style="font-size: 14px; position: absolute; margin-top: -71.5px; margin-left: 86px; color: #001F89; font-weight: bold;" ><?php echo $identidad; ?> </span>
+
+<span  align="center" style="font-size: 14px; width: 200px ;text-align: center;position: absolute; margin-top: -49px; margin-left: -9px;  color: #001F89; font-weight: bold; " ><?php echo $zona_venta; ?> </span>
+
+<img style="border:2px solid #094703; border-radius: 14%; position: absolute; margin-top: -250.5px; margin-left: 350px;" width="120px" height ="120px" src="<?php echo $ruta_foto; ?>" >
+</div>
+
+<div style="width: 486px ; height: 305px;">
+	<img src="./imagenes/carnet_sin_back.jpg" width="100%" height="100%" style="position: relative;">
+</div>
+
+<?php
+
+}
+
+?>
+
+<script type="text/javascript">
+window.print();
+</script>
