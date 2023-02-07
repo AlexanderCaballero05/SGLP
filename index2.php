@@ -77,6 +77,7 @@ function removeCapsWarning() {
 
 
 if(!isset($_SESSION['logged'])){
+//echo md5("123");
 
 ?>
 
@@ -97,14 +98,11 @@ data-target="#modal-login" disabled="true">AUDITORIA INTERNA</button></div>
 <div class="col align-self-center align-middle"><button class="btn btn-primary btn-lg center-block" type="button" id="boton-portal-6" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" data-toggle="modal"
 data-target="#modal-login" disabled="true">GERENCIA FINANCIERA</button></div>
 <div class="col align-self-center align-middle"><button class="btn btn-primary btn-lg center-block" type="button" id="boton-portal-7" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" data-toggle="modal"
-data-target="#modal-login" disabled="true">GERENCIA RRHH</button></div>
-<div class="col align-self-center align-middle"><button class="btn btn-primary btn-lg center-block" type="button" id="boton-portal-8" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" disabled="true">GERENCIA ADMINISTRATIVA</button></div>
-</div>
-<div class="row" style="margin:0px;">
-<div class="col align-self-center align-middle"><button class="btn btn-primary btn-lg center-block" type="button" id="boton-portal-1" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:0px 0px  20px 0px;" data-toggle="modal"
 data-target="#modal-login" disabled="true">DASHBOARD</button></div>
+<div class="col align-self-center align-middle"><button class="btn btn-primary btn-lg center-block" type="button" id="boton-portal-8" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" disabled="true">OTROS</button></div>
 </div>
 </section>
+
 
 <?php
 
@@ -233,46 +231,24 @@ if (isset($_SESSION['gerencia_rrhh'])) {
 <?php
 
 }else{
-echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" >GERENCIA RRHH</button>';
+echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" >DASHBOARD</button>';
 }
 ?>
 
 </div>
 
-<div class="col align-self-center align-middle">
-
-<?php
-if (isset($_SESSION['gerencia_administrativa'])) {
-?>
-
-<button class="btn btn-primary btn-lg bounce animated center-block" type="button" data-bs-hover-animate="bounce"  style="width:100%; background-color:rgb(18,73,77); font-size:20px; height:120px; margin:20px 0px  40px 0px;" onclick = "window.location='./gerencia_administrativa';" >GERENCIA ADMINISTRATIVA</button>
-
-<?php
-
-}else{
-echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" >GERENCIA ADMINISTRATIVA</button>';
-}
-?>
-
-</div>
-
-</div>
-
-<div class="row" style="margin:0px;">
 <div class="col align-self-center align-middle">
 
 <?php
 if (isset($_SESSION['dashboard'])) {
-
 ?>
 
-<button class="btn btn-primary btn-lg bounce animated center-block" type="button" data-bs-hover-animate="bounce"  style="width:100%; background-color:rgb(18,73,77); font-size:20px; height:120px; margin:0px 0px  20px 0px;" onclick = "window.location='./dashboard';" >DASHBOARD</button>
+<button class="btn btn-primary btn-lg bounce animated center-block" type="button" data-bs-hover-animate="bounce"  style="width:100%; background-color:rgb(18,73,77); font-size:20px; height:120px; margin:20px 0px  40px 0px;" onclick = "window.location='./dashboard';" >DASHBOARD</button>
 
 <?php
 
-
 }else{
-echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:0px 0px  20px 0px;" >DASHBOARD</button>';
+echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" >DASHBOARD</button>';
 }
 ?>
 
@@ -315,12 +291,6 @@ echo '<button class="btn btn-primary btn-lg center-block" type="button" style="w
 <div class="modal-header" id="modal-header" style="background-color:#e7e7e7;">
 <h4 class="text-center modal-title" id="modal-heading" style="width:100%;">AUTENTIFICACION DE USUARIO</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
 <div class="modal-body" style="background-color:#f8f8f8;">
-
-<div class="alert alert-info" style = 'font-size:small; text-align:center;'>
-  <i class="fa fa-exclamation-circle"></i>
-  Si es primera vez que ingresa al sistema o solicitó cambio de contraseña, unicamente debe ingresar su nombre de usuario.
-</div>
-
 <form method="POST">
 <div class="input-group" style="margin:5px 0px 5px 0px;">
 <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user" style="font-size:27px;color:rgb(58,58,58);"></i></span></div><input class="form-control" type="text" name="user" placeholder="Usuario">
@@ -486,58 +456,16 @@ $cliente = new nusoap_client($wsdl,true);
 $cliente->soap_defencoding = 'utf-8';//default is
 $cliente->response_timeout = 200;//seconds
 $cliente->useHTTPPersistentConnection();
-*/
-
-//$result = $cliente-> call("PaniGetlogin", array("usuario" => $u , "password" => $p));
-
-  $c_status = mysqli_query($conn, "SELECT * FROM pani_usuarios WHERE usuario = '$u'   LIMIT 1  ");
-
-  if (mysqli_num_rows($c_status) > 0) {
-
-    $ob_status = mysqli_fetch_object($c_status);
-    $estado_usuario = $ob_status->estados_id;
-  
-    if ($estado_usuario == 3) {
-    
-      header('Location: newPass.php?u='.$u);
-    
-    }elseif ($estado_usuario == 2) {
-      
-      ?>
-      <script type="text/javascript">
-      swal("", "Lo sentimos, su estado esta deshabilitado por favor comuniquese con la unidad de Informatica.", "error");
-      </script>
-      <?php
-      
-      $result=0;
-
-    }else{
-
-      $result=1;
-
-    }
-  
 
 
+$result = $cliente-> call("PaniGetlogin", array("usuario" => $u , "password" => $p)); */
 
-  }else{
-
-    $result=0;
-
-  }
-
-
-
-
+$result=1;
 
 if ($result == 1) {
 
-$p = md5($p);
-
-
-$c_user = mysqli_query($conn, "SELECT * FROM pani_usuarios WHERE usuario = '$u' AND password = '$p'  AND estados_id = 1 LIMIT 1  ");
-
-$count = mysqli_num_rows($c_user);
+$c_user = mysqli_query($conn, "SELECT * FROM pani_usuarios WHERE usuario = '$u'  LIMIT 1  ");
+$count = 1;
 
 }else{
 
@@ -546,13 +474,11 @@ $count = 0;
 }
 
 
-
 if ($count > 0 ) {
 
 $ob_user   = mysqli_fetch_object($c_user);
 $id_u      = $ob_user->id;
 $nombre_u  = $ob_user->nombre_completo;
-
 $rol_u     = $ob_user->roles_usuarios_id;
 $usuario_u = $ob_user->usuario;
 $estado_u  = $ob_user->estados_id;

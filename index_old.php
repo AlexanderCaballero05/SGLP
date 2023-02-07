@@ -1,4 +1,4 @@
-<?php
+<?php 
 require("./template/header.php");
 ?>
 
@@ -33,7 +33,7 @@ document.onkeypress = function(e) {
   if (!chr) return; // special key
 
   if (chr.toLowerCase() == chr.toUpperCase()) {
-    // caseless symbol, like whitespace
+    // caseless symbol, like whitespace 
     // can't use it to detect Caps Lock
     return;
   }
@@ -42,7 +42,7 @@ document.onkeypress = function(e) {
 }
 
 /**
- * Check caps lock
+ * Check caps lock 
  */
 function checkCapsWarning() {
   document.getElementById('caps').style.display = capsLockEnabled ? 'block' : 'none';
@@ -73,10 +73,11 @@ function removeCapsWarning() {
 <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& SECCION GERENCIAS &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& SECCION GERENCIAS &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 
-<?php
+<?php 
 
 
 if(!isset($_SESSION['logged'])){
+//echo md5("123");
 
 ?>
 
@@ -97,17 +98,14 @@ data-target="#modal-login" disabled="true">AUDITORIA INTERNA</button></div>
 <div class="col align-self-center align-middle"><button class="btn btn-primary btn-lg center-block" type="button" id="boton-portal-6" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" data-toggle="modal"
 data-target="#modal-login" disabled="true">GERENCIA FINANCIERA</button></div>
 <div class="col align-self-center align-middle"><button class="btn btn-primary btn-lg center-block" type="button" id="boton-portal-7" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" data-toggle="modal"
-data-target="#modal-login" disabled="true">GERENCIA RRHH</button></div>
-<div class="col align-self-center align-middle"><button class="btn btn-primary btn-lg center-block" type="button" id="boton-portal-8" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" disabled="true">GERENCIA ADMINISTRATIVA</button></div>
-</div>
-<div class="row" style="margin:0px;">
-<div class="col align-self-center align-middle"><button class="btn btn-primary btn-lg center-block" type="button" id="boton-portal-1" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:0px 0px  20px 0px;" data-toggle="modal"
 data-target="#modal-login" disabled="true">DASHBOARD</button></div>
+<div class="col align-self-center align-middle"><button class="btn btn-primary btn-lg center-block" type="button" id="boton-portal-8" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" disabled="true">OTROS</button></div>
 </div>
 </section>
 
-<?php
 
+<?php
+    
 }else{
 
 
@@ -132,7 +130,7 @@ if (isset($_SESSION['gerencia_loteria'])) {
 </div>
 <div class="col align-self-center align-middle">
 
-<?php
+<?php 
 
 if (isset($_SESSION['gerencia_imprenta'])) {
 
@@ -141,7 +139,7 @@ if (isset($_SESSION['gerencia_imprenta'])) {
 <?php
 
 }else{
-echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:40px 0px  20px 0px;" >GERENCIA &nbsp;IMPRENTA</button>';
+echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:40px 0px  20px 0px;" >GERENCIA &nbsp;IMPRENTA</button>';    
 }
 
 ?>
@@ -149,7 +147,7 @@ echo '<button class="btn btn-primary btn-lg center-block" type="button" style="w
 </div>
 <div class="col align-self-center align-middle">
 
-<?php
+<?php 
 
 if (isset($_SESSION['unidad_informatica'])) {
 ?>
@@ -158,7 +156,7 @@ if (isset($_SESSION['unidad_informatica'])) {
 
 <?php
 }else{
-echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:40px 0px  20px 0px;" >UNIDAD INFORMATICA</button>';
+echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:40px 0px  20px 0px;" >UNIDAD INFORMATICA</button>';    
 }
 
 ?>
@@ -166,7 +164,7 @@ echo '<button class="btn btn-primary btn-lg center-block" type="button" style="w
 </div>
 <div class="col align-self-center align-middle">
 
-<?php
+<?php 
 
 if (isset($_SESSION['unidad_planificacion'])) {
 
@@ -178,7 +176,7 @@ if (isset($_SESSION['unidad_planificacion'])) {
 
 
 }else{
-echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:40px 0px  20px 0px;" >UNIDAD PLANIFICACION</button>';
+echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:40px 0px  20px 0px;" >UNIDAD PLANIFICACION</button>';    
 }
 
 ?>
@@ -189,7 +187,7 @@ echo '<button class="btn btn-primary btn-lg center-block" type="button" style="w
 <div class="row" style="margin:0px;">
 <div class="col align-self-center align-middle">
 
-<?php
+<?php 
 if (isset($_SESSION['auditoria_interna'])) {
 
 ?>
@@ -200,14 +198,14 @@ if (isset($_SESSION['auditoria_interna'])) {
 
 
 }else{
-echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" >AUDITORIA INTERNA</button>';
+echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" >AUDITORIA INTERNA</button>';    
 }
 ?>
 
 </div>
 <div class="col align-self-center align-middle">
 
-<?php
+<?php 
 if (isset($_SESSION['gerencia_financiera'])) {
 ?>
 
@@ -216,7 +214,7 @@ if (isset($_SESSION['gerencia_financiera'])) {
 <?php
 
 }else{
-echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" >GERENCIA FINANCIERA</button>';
+echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" >GERENCIA FINANCIERA</button>';    
 }
 ?>
 
@@ -224,7 +222,7 @@ echo '<button class="btn btn-primary btn-lg center-block" type="button" style="w
 
 <div class="col align-self-center align-middle">
 
-<?php
+<?php 
 if (isset($_SESSION['gerencia_rrhh'])) {
 ?>
 
@@ -233,7 +231,7 @@ if (isset($_SESSION['gerencia_rrhh'])) {
 <?php
 
 }else{
-echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" >GERENCIA RRHH</button>';
+echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" >DASHBOARD</button>';    
 }
 ?>
 
@@ -241,38 +239,16 @@ echo '<button class="btn btn-primary btn-lg center-block" type="button" style="w
 
 <div class="col align-self-center align-middle">
 
-<?php
-if (isset($_SESSION['gerencia_administrativa'])) {
-?>
-
-<button class="btn btn-primary btn-lg bounce animated center-block" type="button" data-bs-hover-animate="bounce"  style="width:100%; background-color:rgb(18,73,77); font-size:20px; height:120px; margin:20px 0px  40px 0px;" onclick = "window.location='./gerencia_administrativa';" >GERENCIA ADMINISTRATIVA</button>
-
-<?php
-
-}else{
-echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" >GERENCIA ADMINISTRATIVA</button>';
-}
-?>
-
-</div>
-
-</div>
-
-<div class="row" style="margin:0px;">
-<div class="col align-self-center align-middle">
-
-<?php
+<?php 
 if (isset($_SESSION['dashboard'])) {
-
 ?>
 
-<button class="btn btn-primary btn-lg bounce animated center-block" type="button" data-bs-hover-animate="bounce"  style="width:100%; background-color:rgb(18,73,77); font-size:20px; height:120px; margin:0px 0px  20px 0px;" onclick = "window.location='./dashboard';" >DASHBOARD</button>
+<button class="btn btn-primary btn-lg bounce animated center-block" type="button" data-bs-hover-animate="bounce"  style="width:100%; background-color:rgb(18,73,77); font-size:20px; height:120px; margin:20px 0px  40px 0px;" onclick = "window.location='./dashboard';" >DASHBOARD</button>
 
 <?php
 
-
 }else{
-echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:0px 0px  20px 0px;" >DASHBOARD</button>';
+echo '<button class="btn btn-primary btn-lg center-block" type="button" style="width:100%;background-color:rgb(47,47,47);font-size:20px;height:120px;margin:20px 0px  40px 0px;" >DASHBOARD</button>';    
 }
 ?>
 
@@ -283,7 +259,7 @@ echo '<button class="btn btn-primary btn-lg center-block" type="button" style="w
 
 
 <?php
-
+    
 }
 
 ?>
@@ -294,7 +270,7 @@ echo '<button class="btn btn-primary btn-lg center-block" type="button" style="w
 <!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&$$$$$$$$$$$$$$$$$$$&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 
 
-
+    
 
 
 
@@ -315,12 +291,6 @@ echo '<button class="btn btn-primary btn-lg center-block" type="button" style="w
 <div class="modal-header" id="modal-header" style="background-color:#e7e7e7;">
 <h4 class="text-center modal-title" id="modal-heading" style="width:100%;">AUTENTIFICACION DE USUARIO</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
 <div class="modal-body" style="background-color:#f8f8f8;">
-
-<div class="alert alert-info" style = 'font-size:small; text-align:center;'>
-  <i class="fa fa-exclamation-circle"></i>
-  Si es primera vez que ingresa al sistema o solicitó cambio de contraseña, unicamente debe ingresar su nombre de usuario.
-</div>
-
 <form method="POST">
 <div class="input-group" style="margin:5px 0px 5px 0px;">
 <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user" style="font-size:27px;color:rgb(58,58,58);"></i></span></div><input class="form-control" type="text" name="user" placeholder="Usuario">
@@ -423,13 +393,13 @@ Loteria
 Sorteo
 </span>
 </div>
-<input type = "numer" class = "form-control" min = "1" max = "9999" id="sorteo-premio" >
+<input type = "numer" class = "form-control" min = "1" max = "9999" id="sorteo-premio" >      
 </div>
 
 
 <div id= 'show-cambio-inputs'>
 
-<div class="input-group"  style = "margin-top:8px"><div class="input-group-prepend"><span style="width: 80px;" class="input-group-text" >Billete</span></div><input type = "numer" class = "form-control" min = "0" max = "99999" id="billete-premio" ></div>
+<div class="input-group"  style = "margin-top:8px"><div class="input-group-prepend"><span style="width: 80px;" class="input-group-text" >Billete</span></div><input type = "numer" class = "form-control" min = "0" max = "99999" id="billete-premio" ></div>    
 
 </div>
 
@@ -462,7 +432,7 @@ Sorteo
 
 
 
-<?php
+<?php 
 
 require("./template/footer.php");
 
@@ -474,77 +444,32 @@ require("./template/footer.php");
 
 if (isset($_POST['login'])) {
 
-$u = $_POST['user'];
-$p = $_POST['pass'];
+$u = $_POST['user']; 
+$p = $_POST['pass']; 
 
 
 require("conexion.php");
 
-/*
-$wsdl="http://192.168.15.6/PANIAD_LOGIN/_GetPaniLogin.php?wsdl";
+
+$wsdl="http://192.168.15.17/PANIAD_LOGIN/_GetPaniLogin.php?wsdl";
 $cliente = new nusoap_client($wsdl,true);
-$cliente->soap_defencoding = 'utf-8';//default is
+$cliente->soap_defencoding = 'utf-8';//default is 
 $cliente->response_timeout = 200;//seconds
 $cliente->useHTTPPersistentConnection();
-*/
-
-//$result = $cliente-> call("PaniGetlogin", array("usuario" => $u , "password" => $p));
-
-  $c_status = mysqli_query($conn, "SELECT * FROM pani_usuarios WHERE usuario = '$u'   LIMIT 1  ");
-
-  if (mysqli_num_rows($c_status) > 0) {
-
-    $ob_status = mysqli_fetch_object($c_status);
-    $estado_usuario = $ob_status->estados_id;
-  
-    if ($estado_usuario == 3) {
-    
-      header('Location: newPass.php?u='.$u);
-    
-    }elseif ($estado_usuario == 2) {
-      
-      ?>
-      <script type="text/javascript">
-      swal("", "Lo sentimos, su estado esta deshabilitado por favor comuniquese con la unidad de Informatica.", "error");
-      </script>
-      <?php
-      
-      $result=0;
-
-    }else{
-
-      $result=1;
-
-    }
-  
 
 
-
-  }else{
-
-    $result=0;
-
-  }
-
-
-
-
+$result = $cliente-> call("PaniGetlogin", array("usuario" => $u , "password" => $p));
 
 if ($result == 1) {
 
-$p = md5($p);
-
-
-$c_user = mysqli_query($conn, "SELECT * FROM pani_usuarios WHERE usuario = '$u' AND password = '$p'  AND estados_id = 1 LIMIT 1  ");
-
-$count = mysqli_num_rows($c_user);
+$c_user = mysqli_query($conn, "SELECT id, nombre_completo, roles_usuarios_id, areas_id, estados_id, usuario FROM pani_usuarios WHERE usuario = '$u'  LIMIT 1  ");
+$count = 1;
 
 }else{
 
-$count = 0;
+$count = 0;  
 
 }
-
 
 
 if ($count > 0 ) {
@@ -552,32 +477,27 @@ if ($count > 0 ) {
 $ob_user   = mysqli_fetch_object($c_user);
 $id_u      = $ob_user->id;
 $nombre_u  = $ob_user->nombre_completo;
-
 $rol_u     = $ob_user->roles_usuarios_id;
 $usuario_u = $ob_user->usuario;
 $estado_u  = $ob_user->estados_id;
 $area_u    = $ob_user->areas_id;
-$entidad_u    = $ob_user->id_entidad;
-$agencia_u    = $ob_user->agencia;
-$departamento_u = $ob_user->departamento;
-$municipio_u    = $ob_user->municipio;
 
 
-$_SESSION['logged']     = true;
-$_SESSION['sesion']     = true;
-$_SESSION['id_usuario'] = $id_u;
-$_SESSION['nombre']     = $nombre_u;
+$_SESSION['logged']         = true;
+$_SESSION['sesion']         = true;
+$_SESSION['id_usuario']     = $id_u;
+$_SESSION['nombre']         = $nombre_u;
 $_SESSION['nombre_usuario'] = $nombre_u;
-$_SESSION['rol']        = $rol_u;
-$_SESSION['usuario']    = $usuario_u;
-$_SESSION['estado']     = $estado_u;
-$_SESSION['area_id']    = $area_u;
-$_SESSION['entidad_id']      = $entidad_u;
-$_SESSION['agencia_id']      = $agencia_u;
-$_SESSION['departamento_id'] = $departamento_u;
-$_SESSION['municipio_id']    = $municipio_u;
+$_SESSION['rol']            = $rol_u;
+$_SESSION['usuario']        = $usuario_u;
+$_SESSION['estado']         = $estado_u;
+$_SESSION['area_id']        = $area_u;
 
 
+
+
+
+$_SESSION['id_usuario_r']   = $id_u;
 //////////////////////////////////////////////////////////////
 /////////////////////// ACCESOS //////////////////////////////
 
@@ -661,13 +581,13 @@ swal("", "Usuario o contraseña incorrectos, por favor intente nuevamente", "err
 
 
 token = Math.random();
-consulta = 'consulta_ultimos_sorteos.php?token='+token;
+consulta = 'consulta_ultimos_sorteos.php?token='+token;     
 $("#respuesta_sorteos").load(consulta);
 
 
 function consultar_premio(){
 
-
+document.getElementById("icon_consultar").className = "fa fa-spinner fa-spin";
 
 tipo_loteria = document.getElementById('select-tipo-sorteo').value;
 sorteo = document.getElementById('sorteo-premio').value;
@@ -689,7 +609,7 @@ serie   = document.getElementById('serie-premio').value;
 }
 
 token = Math.random();
-consulta = 'consultar_premio.php?token='+token+'&ts='+tipo_loteria+'&sort='+sorteo+'&b='+billete+'&n='+numero+'&s='+serie;
+consulta = 'consultar_premio.php?token='+token+'&ts='+tipo_loteria+'&sort='+sorteo+'&b='+billete+'&n='+numero+'&s='+serie;     
 $("#respuesta-consulta-premio").load(consulta);
 
 
